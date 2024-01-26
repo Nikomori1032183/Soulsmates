@@ -20,6 +20,7 @@ public class InputHandler : MonoBehaviour
     public static event InputDelegate OnRight;
     public static event InputDelegate OnInteract;
     public static event InputDelegate OnSprint;
+    public static event InputDelegate OnStopSprint;
     public static event InputDelegate OnExit;
 
     void Start()
@@ -59,10 +60,16 @@ public class InputHandler : MonoBehaviour
             OnInteract?.Invoke();
         }
 
-        if (Input.GetKey(sprint))
+        if (Input.GetKeyDown(sprint))
         {
             Debug.Log("Sprint");
             OnSprint?.Invoke();
+        }
+
+        if (Input.GetKeyUp(sprint))
+        {
+            Debug.Log("Stop Sprint");
+            OnStopSprint?.Invoke();
         }
 
         if (Input.GetKeyDown(exit))

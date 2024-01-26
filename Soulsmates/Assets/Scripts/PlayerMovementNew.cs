@@ -4,35 +4,49 @@ using UnityEngine;
 
 public class PlayerMovementNew : MonoBehaviour
 {
+    [SerializeField] float curSpeed;
+    public float defSpeed;
+    public float sprint;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        InputHandler.OnForward += MoveForward;
+        InputHandler.OnBackward += MoveBackward;
+        InputHandler.OnLeft += MoveLeft;
+        InputHandler.OnRight += MoveRight;
+        InputHandler.OnSprint += MoveSprint;
+        InputHandler.OnStopSprint += Walk;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            transform.position += Vector3.forward;
-        }
+        
     }
 
+    private void MoveSprint()
+    {
+        curSpeed = sprint;
+    }
+    private void Walk()
+    {
+        curSpeed = defSpeed;
+    }
     private void MoveForward()
     {
-        transform.position += Vector3.forward;
+        transform.position += Vector3.forward * curSpeed * Time.deltaTime;
     }
     private void MoveBackward()
     {
-        transform.position -= Vector3.back;
+        transform.position += Vector3.back * curSpeed * Time.deltaTime;
     }
     private void MoveLeft()
     {
-        transform.position = Vector3.left;
+        transform.position += Vector3.left * curSpeed * Time.deltaTime;
     }
     private void MoveRight()
     {
-        transform.position = Vector3.right;
+        transform.position += Vector3.right * curSpeed * Time.deltaTime;
     }
 }
