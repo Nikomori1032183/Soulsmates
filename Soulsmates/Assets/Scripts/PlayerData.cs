@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
     string name;
     List<Task> tasks = new List<Task>();
     int affection;
-    //
+    
 
     void Start()
     {
