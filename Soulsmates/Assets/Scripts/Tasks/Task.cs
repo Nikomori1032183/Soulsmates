@@ -6,8 +6,6 @@ public class Task : MonoBehaviour
 {
     bool completed;
     int affectionReward;
-    string taskName;
-    string taskDescription;
     public delegate void TaskDelegate();
     TaskDelegate onTalk;
 
@@ -31,11 +29,4 @@ public class Task : MonoBehaviour
         return completed;
     }
 
-    public void Reward()
-    {
-        if (completed)
-        {
-            
-        }
-    }
 }
