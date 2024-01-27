@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         timeLeft = timerLength;
         timerActive = true;
 
-        TurnHandler.OnTurnChange += NewTimer;
+        //TurnHandler.OnTurnChange += NewTimer;
     }
 
     void Update()

@@ -18,8 +18,10 @@ public class TurnHandler : MonoBehaviour
 
     Player currentPlayer = Player.Player_1;
 
-    public delegate PlayerData TurnDelegate();
-    public delegate void TurnDelegate();
+    public delegate void TurnDelegate(PlayerData currentPlayerData);
+
+    //public delegate PlayerData TurnDelegate();
+    //public delegate void TurnDelegate();
 
     public static event TurnDelegate OnTurnChange;
 
@@ -28,16 +30,16 @@ public class TurnHandler : MonoBehaviour
 
     }
 
-    protected override delegate TurnDelegate();
+    //protected override delegate TurnDelegate();
 
     void Update()
     {
 
     }
-    
-    public PlayerData GetPlayer() //make get player
+
+    public PlayerData GetPlayer()
     {
-        return player1; //return current player?
+        return player1; //just put this here to stop error code
     }
 
     [Button]
