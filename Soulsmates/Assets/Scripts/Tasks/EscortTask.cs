@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EscortTask : Task
 {
-    Item location; //location
+    Location location;
 
     TaskStage taskStage;
 
-    public static event TaskDelegate OnItemCollected;
+    public static event TaskDelegate OnNPCCollected;
 
     public enum TaskStage
     {
-        Start, NPC_Connected, Item_Gifted
+        Start, NPC_Collected, NPC_Escorted
     }
 
     void Start()
@@ -25,12 +25,12 @@ public class EscortTask : Task
 
     }
 
-    public void SetLocation(Item item) //set requested item at begginning of turn
+    public void SetLocation(Location item) //set requested item at begginning of turn
     {
         location = item;
     }
 
-    public Item GetItem()
+    public Location GetItem()
     {
         return location;
     }
@@ -41,11 +41,11 @@ public class EscortTask : Task
 
         switch (taskStage)
         {
-            case TaskStage.NPC_Connected:
-                OnItemCollected?.Invoke();
+            case TaskStage.NPC_Collected:
+                OnNPCCollected?.Invoke();
                 break;
 
-            case TaskStage.Item_Gifted:
+            case TaskStage.NPC_Escorted:
 
                 break;
 

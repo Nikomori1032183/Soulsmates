@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MusicRoom
   m_EditorClassIdentifier: 
   locationName: MusicRoom
-  locationZone: {fileID: 0}
+  locationZone: {fileID: 7385193375037617975, guid: e47e4cb5b3d13184ca24d7a57587352e, type: 3}

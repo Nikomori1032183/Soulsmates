@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729663a6160637b4dad0a7aabf32e87d, type: 3}
-  m_Name: Stairwell
+  m_Script: {fileID: 11500000, guid: b16a3ee87e66cb944a732828bfc7fc9b, type: 3}
+  m_Name: Amber
   m_EditorClassIdentifier: 
-  locationName: Stairwell
-  locationZone: {fileID: 2178808359369134536, guid: 7fc6f9561fc30a244a81f3190b8d051f, type: 3}
+  personName: Amber
+  person: {fileID: 0}

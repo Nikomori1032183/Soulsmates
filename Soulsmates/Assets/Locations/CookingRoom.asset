@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CookingRoom
   m_EditorClassIdentifier: 
   locationName: CookingRoom
-  locationZone: {fileID: 0}
+  locationZone: {fileID: 4641939454580993581, guid: c349f64691b91d44e9149728b1373ee7, type: 3}
