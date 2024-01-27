@@ -15,12 +15,15 @@ public class PlayerInteractor : MonoBehaviour
     CharacterData charData;
     FetchTask fetchTask;
     Item ItemGiving;
+    Location LocationReached;
+    People personConfronted;
     //[SerializeField] Animator doorAnimator;
 
     bool keyCollected = false;
     bool locked = true;
     int range = 4;
     bool NPC;
+    bool people;
     bool inLeft;
     bool inRight;
 
@@ -63,6 +66,10 @@ public class PlayerInteractor : MonoBehaviour
             //call default interact text with 3 buttons
             GiveItem();
             Escort();
+        }
+
+        if (people)
+        {
             Confront();
         }
         
@@ -160,7 +167,8 @@ public class PlayerInteractor : MonoBehaviour
     private void Escort()
     {
         //call escort request text
-        //follow system
+        //EscortTask.GetLocation().GameObject
+        //follow system 
         //bring NPC to location for location task
     }
 
