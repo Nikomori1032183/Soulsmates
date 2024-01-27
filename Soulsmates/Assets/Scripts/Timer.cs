@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
         if (timeLeft <= 0)
         {
             Debug.Log("Ran Out of time!");
-            timerActive = false;
+            PauseTimer(true);
             //end player turn and reset timer
         }
         if (hourCounter >= 60)
