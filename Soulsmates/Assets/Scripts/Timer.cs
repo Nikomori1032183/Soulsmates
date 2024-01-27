@@ -20,8 +20,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerText = GetComponent<TextMeshProUGUI>();
-        ResetTimer();
-        StartTimer();
+
+        TurnHandler.OnTurnChange += NewTimer;
     }
 
     void Update()
@@ -36,6 +36,7 @@ public class Timer : MonoBehaviour
         if (timeLeft <= 0)
         {
             Debug.Log("Ran Out of time!");
+            timerActive = false;
             //end player turn and reset timer
         }
         if (hourCounter >= 60)
@@ -50,14 +51,9 @@ public class Timer : MonoBehaviour
         }
         timerText.text = "Day " + day + "\n" + dayTime + ":" + Mathf.Round(hourCounter);
     }
-
-    void ResetTimer()
+    void NewTimer(PlayerData playerData) // doesnt actually need that info but we deal with it for now lmao. i guess the solution for that would be to have multiple types of delegate that the turn system can send out
     {
         timeLeft = timerLength;
-    }
-
-    void StartTimer()
-    {
         timerActive = true;
     }
 
