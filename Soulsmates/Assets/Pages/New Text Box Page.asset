@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7770e9c2df9684ca3d1f6a8817f398, type: 3}
   m_Name: New Text Box Page
   m_EditorClassIdentifier: 
-  text: 
+  text: yeokhterpopmrtjtjrtjrok[tjrjj
   font: {fileID: 0}
   size: 32
   color: {r: 0, g: 0, b: 0, a: 1}
   alignment: 513
   textScroll: 1
-  scrollInterval: 0.504
+  scrollInterval: 0.15
   characterName: name
   portrait: {fileID: 0}
   layoutType: 0

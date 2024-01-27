@@ -15,19 +15,22 @@ public class PlayerInteractor : MonoBehaviour
     CharacterData charData;
     FetchTask fetchTask;
     Item ItemGiving;
+    Location LocationReached;
+    People personConfronted;
     //[SerializeField] Animator doorAnimator;
 
     bool keyCollected = false;
     bool locked = true;
     int range = 4;
     bool NPC;
+    bool people;
     bool inLeft;
     bool inRight;
 
     void Start()
     {
         InputHandler.OnInteract += interact;
-        InputHandler.OnInteract += DropItem;
+        InputHandler.OnDrop += DropItem;
         charData = GetComponent<CharacterData>();
     }
 
@@ -60,9 +63,13 @@ public class PlayerInteractor : MonoBehaviour
         //if interacting with a NPC
         if (NPC)
         {
-            //call default interact text with 3 buttons
+            //call default interact text with 2 buttons
             GiveItem();
             Escort();
+        }
+
+        if (people)
+        {
             Confront();
         }
         
@@ -105,8 +112,6 @@ public class PlayerInteractor : MonoBehaviour
 
     private void GiveItem()
     {
-        //call give item text
-        //check if player has item that their character wants (FetchTask.GetItem)
         if (charData.GetLeftItem() != null)
         {
             inLeft = true;
@@ -160,7 +165,8 @@ public class PlayerInteractor : MonoBehaviour
     private void Escort()
     {
         //call escort request text
-        //follow system
+        //EscortTask.GetLocation().GameObject
+        //follow system 
         //bring NPC to location for location task
     }
 

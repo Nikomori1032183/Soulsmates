@@ -28,8 +28,6 @@ public class PlayerMovementNew : MonoBehaviour
     private void MoveSprint()
     {
         curSpeed = sprint;
-        StartCoroutine(WaitFive()); //stamina system here
-        Walk();
     }
     private void Walk()
     {
