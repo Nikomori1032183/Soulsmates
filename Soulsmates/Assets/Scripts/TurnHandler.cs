@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using VInspector;
 
 public class TurnHandler : MonoBehaviour
 {
@@ -15,9 +16,7 @@ public class TurnHandler : MonoBehaviour
         Player_1, Player_2, Player_3, Player_4
     }
 
-    Player currentPlayer;
-
-    [SerializeField] Timer timer;
+    Player currentPlayer = Player.Player_1;
 
     public delegate void TurnDelegate(PlayerData currentPlayerData);
 
@@ -33,6 +32,7 @@ public class TurnHandler : MonoBehaviour
 
     }
 
+    [Button]
     public void ChangeTurn()
     {
         switch (currentPlayer)
