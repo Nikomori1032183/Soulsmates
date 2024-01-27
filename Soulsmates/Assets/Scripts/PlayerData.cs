@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     string name;
-    List<Task> tasks = new List<Task>();
-
-    Lover loveInterest; 
+    List<Task> playerTasks = new List<Task>();
     int affection;
     
 
@@ -32,11 +30,11 @@ public class PlayerData : MonoBehaviour
 
     public void AddTask(Task task)
     {
-        tasks.Add(task); //Can we change this name to playersTasks? 
+        playerTasks.Add(task);
     }
 
     public void RemoveTask(Task task)
     {
-        tasks.Remove(task);
+        playerTasks.Remove(task);
     }
 }
