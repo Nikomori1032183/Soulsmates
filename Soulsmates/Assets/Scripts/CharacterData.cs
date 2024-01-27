@@ -43,6 +43,20 @@ public class CharacterData : MonoBehaviour
         rightHand = item;
     }
 
+    public void RemoveItem()
+    {
+        if (rightHand != null)
+        {
+            Debug.Log("Right hand item removed: " + rightHand.itemName);
+            rightHand = null;
+        }
+        else
+        {
+            Debug.Log("Left hand item removed: " + leftHand.itemName);
+            leftHand = null;
+        }
+    }
+
     public void AddStatus(Status status)
     {
         statuses.Add(status);

@@ -30,7 +30,7 @@ public class PlayerData : MonoBehaviour
 
     public void AddTask(Task task)
     {
-        tasks.Add(task);
+        tasks.Add(task); //Can we change this name to playersTasks? 
     }
 
     public void RemoveTask(Task task)
