@@ -25,7 +25,7 @@ public class FetchTask : Task
         
     }
 
-    public void SetItem(Item item)
+    public void SetItem(Item item) //set requested item at begginning of turn
     {
         requrestedItem = item;
     }

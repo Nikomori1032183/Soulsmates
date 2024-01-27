@@ -38,6 +38,11 @@ MonoBehaviour:
     - b28bd598f01704a77bdfb0d3be458d75
     - acbd38264c6b44d8793f649f090c335f
     - 5d16d2009bbe6411cb3e1c14d69b840c
+    - 1eb295f59c0ab6a418c3239130b9091d
+    - 0f396e65e8cbf1a4ea1556d8c48d827d
+    - e13afbf41df8c024da0cede52e749f60
+    - e7175e7cc2e31f744a8637e8179712d9
+    - 31cc24d5e456fee4a8b36af4e366c065
     values:
     - guid: 00000000000000001000000000000000
       iColor: 0
@@ -51,7 +56,7 @@ MonoBehaviour:
       autoIconDirty: 0
     - guid: 9a485a201214bfc459539cec79eedecd
       iColor: 0
-      autoIcon: 
+      autoIcon: ScriptableObject Icon
       customIcon: PrefabModel Icon
       autoIconDirty: 0
     - guid: 370f22f66c0b1784fbe182a8544c6d52
@@ -137,25 +142,50 @@ MonoBehaviour:
     - guid: 16e28984da344154db23850d87329c71
       iColor: 0
       autoIcon: 
-      customIcon: 
+      customIcon: cs Script Icon
       autoIconDirty: 0
     - guid: de0d05608206a42af8845c2cfefff32b
       iColor: 0
       autoIcon: 
-      customIcon: 
+      customIcon: cs Script Icon
       autoIconDirty: 0
     - guid: b28bd598f01704a77bdfb0d3be458d75
       iColor: 0
       autoIcon: 
-      customIcon: 
+      customIcon: cs Script Icon
       autoIconDirty: 0
     - guid: acbd38264c6b44d8793f649f090c335f
       iColor: 0
       autoIcon: 
-      customIcon: 
+      customIcon: cs Script Icon
       autoIconDirty: 0
     - guid: 5d16d2009bbe6411cb3e1c14d69b840c
       iColor: 0
       autoIcon: 
+      customIcon: cs Script Icon
+      autoIconDirty: 0
+    - guid: 1eb295f59c0ab6a418c3239130b9091d
+      iColor: 0
+      autoIcon: Prefab Icon
+      customIcon: 
+      autoIconDirty: 0
+    - guid: 0f396e65e8cbf1a4ea1556d8c48d827d
+      iColor: 0
+      autoIcon: cs Script Icon
+      customIcon: 
+      autoIconDirty: 0
+    - guid: e13afbf41df8c024da0cede52e749f60
+      iColor: 0
+      autoIcon: 
+      customIcon: 
+      autoIconDirty: 0
+    - guid: e7175e7cc2e31f744a8637e8179712d9
+      iColor: 0
+      autoIcon: ScriptableObject Icon
+      customIcon: 
+      autoIconDirty: 0
+    - guid: 31cc24d5e456fee4a8b36af4e366c065
+      iColor: 0
+      autoIcon: ScriptableObject Icon
       customIcon: 
       autoIconDirty: 0

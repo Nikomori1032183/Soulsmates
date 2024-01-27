@@ -5,7 +5,9 @@ using UnityEngine;
 public class Task : MonoBehaviour
 {
     bool completed;
+    int affectionReward;
     public delegate void TaskDelegate();
+    TaskDelegate onTalk;
 
     void Start()
     {
@@ -26,4 +28,5 @@ public class Task : MonoBehaviour
     {
         return completed;
     }
+
 }
