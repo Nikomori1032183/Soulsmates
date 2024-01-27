@@ -55,7 +55,7 @@ public class Timer : MonoBehaviour
         timerText.text = "Day " + day + "\n" + dayTime + ":" + Mathf.Round(hourCounter);
     }
 
-    void NewTimer(PlayerData playerData) // doesnt actually need that info but we deal with it for now lmao. i guess the solution for that would be to have multiple types of delegate that the turn system can send out
+    void NewTimer() // doesnt actually need that info but we deal with it for now lmao. i guess the solution for that would be to have multiple types of delegate that the turn system can send out
     {
         timeLeft = timerLength;
         timerActive = true;
