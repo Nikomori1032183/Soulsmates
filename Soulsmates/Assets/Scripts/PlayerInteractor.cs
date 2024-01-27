@@ -14,12 +14,15 @@ public class PlayerInteractor : MonoBehaviour
     CollectableItem collectedItem;
     CharacterData charData;
     FetchTask fetchTask;
+    Item ItemGiving;
     //[SerializeField] Animator doorAnimator;
 
     bool keyCollected = false;
     bool locked = true;
     int range = 4;
     bool NPC;
+    bool inLeft;
+    bool inRight;
 
     void Start()
     {
@@ -104,13 +107,53 @@ public class PlayerInteractor : MonoBehaviour
     {
         //call give item text
         //check if player has item that their character wants (FetchTask.GetItem)
-        if (fetchTask.GetItem() == charData.GetLeftItem() || fetchTask.GetItem() == charData.GetRightItem())
+        if (charData.GetLeftItem() != null)
         {
-
+            inLeft = true;
         }
-        //set item as being collected (set change task stage to 2)
-        //if so give NPC item
-        //call reaction to item 
+        else if (charData.GetRightItem() != null)
+        {
+            inRight = true;
+        }
+        else
+        {
+            Debug.Log("No items to give");
+            return;
+        }
+
+        //choose an item to give
+        if (GiveLeft()) 
+        {
+            Debug.Log("Giving Left Item");
+            ItemGiving = charData.GetLeftItem();
+        }
+        if (GiveRight())
+        {
+            Debug.Log("Giving Right Item");
+            ItemGiving = charData.GetRightItem();
+        }
+
+        if (fetchTask.GetItem() == ItemGiving)
+        {
+            Debug.Log("Fetch Task Complete");
+            fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
+            //display thankful text for item
+            if (inLeft)
+            {
+                charData.SetLeftItem(null);
+                inLeft = false;
+            }
+            else
+            {
+                charData.SetRightItem(null);
+                inRight = false;
+            }
+        }
+        //check if item is liked or hated
+        else
+        {
+            //display text for no opinion about item
+        }
 
     }
 
@@ -126,5 +169,14 @@ public class PlayerInteractor : MonoBehaviour
         //locate another NPC and interact with speech
         //confront 3 choices
         //instantiate text box that points to conversation folder
+    }
+
+    private bool GiveLeft()
+    {
+        return true;
+    }
+    private bool GiveRight()
+    {
+        return true;
     }
 }

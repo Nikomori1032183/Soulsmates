@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ea5a632b87f6748ae5c911fe4cef22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
   timerLength: 120
   dayTime: 0
   day: 0
@@ -1436,9 +1437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541be706d4427e449a38db78b53f1edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyCollected: 0
-  locked: 1
-  range: 4
 --- !u!114 &2072368612
 MonoBehaviour:
   m_ObjectHideFlags: 0
