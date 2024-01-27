@@ -7,8 +7,6 @@ public class Task : MonoBehaviour
     bool completed;
     public delegate void TaskDelegate();
 
-    public static event TaskDelegate OnComplete;
-
     void Start()
     {
         

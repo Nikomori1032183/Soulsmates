@@ -20,7 +20,7 @@ public class CharacterData : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void SetCoins(int coins)
@@ -60,6 +60,6 @@ public class CharacterData : MonoBehaviour
 
     public Item GetRightItem()
     {
-        return leftHand;
+        return rightHand;
     }
 }
