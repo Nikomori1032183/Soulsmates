@@ -57,7 +57,7 @@ public class TextBox : MonoBehaviour
     private void Start()
     {
         // ***CHANGE BELOW***
-        // (CONFIRM_PRESS_EVENT_NAME) += ConfirmPress;
+        InputHandler.OnInteract += ConfirmPress;
 
         textBoxAudio = GetComponent<TextBoxAudio>();
 
@@ -406,6 +406,11 @@ public class TextBox : MonoBehaviour
         {
             StopCoroutine(blinkCoroutine);
         }
+    }
+
+    public void SetDirectory(string directory)
+    {
+        pageDirectory = directory;
     }
 
     public enum IconType // Different types of icons

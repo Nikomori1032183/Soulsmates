@@ -6,6 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     string name;
     List<Task> tasks = new List<Task>();
+
+    Lover loveInterest; 
     int affection;
     
 

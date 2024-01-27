@@ -233,6 +233,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 221999406}
     m_Modifications:
+    - target: {fileID: 4062515292252602497, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: pageDirectory
+      value: Assets/Dialogue/Flowers Conversation
+      objectReference: {fileID: 0}
     - target: {fileID: 7376127378946665746, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
       propertyPath: m_Name
       value: Text Box
@@ -577,6 +581,7 @@ MonoBehaviour:
   interact: 101
   sprint: 304
   exit: 27
+  drop: 0
 --- !u!4 &1979927446
 Transform:
   m_ObjectHideFlags: 0
