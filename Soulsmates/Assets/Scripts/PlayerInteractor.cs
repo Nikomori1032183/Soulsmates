@@ -30,7 +30,7 @@ public class PlayerInteractor : MonoBehaviour
     void Start()
     {
         InputHandler.OnInteract += interact;
-        InputHandler.OnInteract += DropItem;
+        InputHandler.OnDrop += DropItem;
         charData = GetComponent<CharacterData>();
     }
 
@@ -63,7 +63,7 @@ public class PlayerInteractor : MonoBehaviour
         //if interacting with a NPC
         if (NPC)
         {
-            //call default interact text with 3 buttons
+            //call default interact text with 2 buttons
             GiveItem();
             Escort();
         }
@@ -112,8 +112,6 @@ public class PlayerInteractor : MonoBehaviour
 
     private void GiveItem()
     {
-        //call give item text
-        //check if player has item that their character wants (FetchTask.GetItem)
         if (charData.GetLeftItem() != null)
         {
             inLeft = true;
