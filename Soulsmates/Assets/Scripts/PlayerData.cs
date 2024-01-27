@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Author: Frank Manford
+// Description: Class for holding player data
+
 public class PlayerData : MonoBehaviour
 {
     string name;

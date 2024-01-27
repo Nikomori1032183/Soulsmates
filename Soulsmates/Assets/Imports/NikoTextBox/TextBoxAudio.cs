@@ -65,7 +65,7 @@ public class TextBoxAudio : MonoBehaviour
         if (GetScrollAudioType() == TextBoxAudio.ScrollAudioType.Loop)
         {
             Debug.Log("StopScrollSound");
-            audioSource.Stop();
+            audioSource.loop = false; 
         }
     }
 
