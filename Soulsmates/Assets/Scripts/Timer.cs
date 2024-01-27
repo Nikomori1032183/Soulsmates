@@ -6,7 +6,7 @@ using VInspector;
 
 public class Timer : MonoBehaviour
 {
-    TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI timerText;
 
     [SerializeField] float timerLength = 120.0f;
     float timeLeft;
