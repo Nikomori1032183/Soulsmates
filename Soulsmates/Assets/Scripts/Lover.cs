@@ -8,48 +8,70 @@ using UnityEngine;
 
 public class Lover : MonoBehaviour
 {
-    string name;
-    Sprite sprite;
+    [SerializeField] GameLogic gameLogic;
+
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
+
     Item likedItem, dislikedItem;
     Location likedLocation;
     People dislikedPerson;
-
-    public enum Location
-    {
-        Stairwell, Gym, Janitors_Closet, Cafeteria, Music_Room, Cooking_Room
-    }
-
-    public void RandomizePreferences()
-    {
-        //Random.Range(1, )
-    }
 
     private void Start()
     {
         
     }
 
-    //public void LoadItems()
-    //{
-    //    string[] guids;
-    //    guids = AssetDatabase.FindAssets("t:Item", new[] { itemDirectory });
-    //    foreach (string guid in guids)
-    //    {
-    //        Debug.Log("Item: " + AssetDatabase.GUIDToAssetPath(guid));
-    //        Item item = AssetDatabase.LoadAssetAtPath<Item>(AssetDatabase.GUIDToAssetPath(guid));
-    //        items.Add(item);
-    //    }
-    //}
+    public void RandomPreferences()
+    {
+        int rand;
 
-    //public void LoadItems()
-    //{
-    //    string[] guids;
-    //    guids = AssetDatabase.FindAssets("t:Item", new[] { itemDirectory });
-    //    foreach (string guid in guids)
-    //    {
-    //        Debug.Log("Item: " + AssetDatabase.GUIDToAssetPath(guid));
-    //        Item item = AssetDatabase.LoadAssetAtPath<Item>(AssetDatabase.GUIDToAssetPath(guid));
-    //        items.Add(item);
-    //    }
-    //}
+        // Items
+        List<Item> itemList = gameLogic.items;
+        rand = Random.Range(0, itemList.Count - 1);
+        likedItem = itemList[rand];
+
+        itemList.Remove(gameLogic.items[rand]);
+
+        rand = Random.Range(0, itemList.Count - 1);
+        dislikedItem = itemList[rand];
+
+        // Location
+        rand = Random.Range(0, gameLogic.locations.Count - 1);
+        likedLocation = gameLogic.locations[rand];
+
+        // Person
+        rand = Random.Range(0, gameLogic.peoples.Count - 1);
+        dislikedPerson = gameLogic.peoples[rand];
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public Sprite GetSprite()
+    {
+        return sprite;
+    }
+
+    public Item GetLikedItem()
+    {
+        return likedItem;
+    }
+
+    public Item GetDislikedItem()
+    {
+        return dislikedItem;
+    }
+
+    public Location GetLikedLocation()
+    {
+        return likedLocation;
+    }
+
+    public People GetDislikedPerson()
+    {
+        return dislikedPerson;
+    }
 }
