@@ -18,7 +18,8 @@ public class TurnHandler : MonoBehaviour
 
     Player currentPlayer = Player.Player_1;
 
-    public delegate void TurnDelegate(PlayerData currentPlayerData);
+    public delegate PlayerData TurnDelegate();
+    public delegate void TurnDelegate();
 
     public static event TurnDelegate OnTurnChange;
 
@@ -26,6 +27,8 @@ public class TurnHandler : MonoBehaviour
     {
 
     }
+
+    protected override delegate TurnDelegate();
 
     void Update()
     {
