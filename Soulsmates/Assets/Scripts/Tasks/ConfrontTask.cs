@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocateTask : Task
+public class ConfrontTask : Task
 {
     People people;
 

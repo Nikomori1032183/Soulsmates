@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729663a6160637b4dad0a7aabf32e87d, type: 3}
-  m_Name: Cafeteria
+  m_Script: {fileID: 11500000, guid: ef97db844710a1245b81c41ec9ab0420, type: 3}
+  m_Name: Greg-kun
   m_EditorClassIdentifier: 
-  locationName: Cafeteria
-  locationZone: {fileID: 326867954871925217, guid: 8e2ff4c4f7f52af4cac017cf446940e4, type: 3}
+  loverName: Greg-kun

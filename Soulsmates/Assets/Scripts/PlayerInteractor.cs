@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -5,33 +6,64 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using VInspector;
 
 
 public class PlayerInteractor : MonoBehaviour
 {
-    GameObject player;
+    //core
+    public GameObject player;
+    Lover lover;
     UnityEvent onInteract;
+    TurnHandler onTurnHandler;
+
+    //Interactables
     CollectableItem collectedItem;
+    InteractLover interactLover;
+
+    //Data
     CharacterData charData;
+    PlayerData playerData;
+
+    //Tasks
     FetchTask fetchTask;
+    EscortTask escortTask;
+    ConfrontTask confrontTask;
+
+    //ScriptableObjects
     Item ItemGiving;
-    Location LocationReached;
+    Location locationReached;
     People personConfronted;
+    LovePerson LovePerson;
+
     //[SerializeField] Animator doorAnimator;
 
     bool keyCollected = false;
     bool locked = true;
     int range = 4;
-    bool NPC;
+    [SerializeField] float followSpeed = 0.55f;
+
     bool people;
     bool inLeft;
     bool inRight;
+
+    Vector3 offset = new Vector3(-1, 0, 0);
+    Vector3 currentVelocity;
 
     void Start()
     {
         InputHandler.OnInteract += interact;
         InputHandler.OnDrop += DropItem;
         charData = GetComponent<CharacterData>();
+    }
+
+    private void LateUpdate()
+    {
+        if (interactLover != null) //later change to when follow is true
+        {
+            //interactLover.GameObject().transform.position = player.transform.position + offset;
+            
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,8 +78,23 @@ public class PlayerInteractor : MonoBehaviour
         //if object in range is an NPC with NPC tag
         if (other.GameObject().CompareTag("NPC"))
         {
-            NPC = true;
+            Debug.Log("A Lover is Near");
+            InteractLover interact = other.GetComponent<InteractLover>();
+            interactLover = interact;
+            Debug.Log(interactLover.lovePerson.loverName);
         }
+
+        //if (other.GetComponent<Location>() != null)
+        //{
+        //    Location place = other.GetComponent<Location>();
+        //    locationReached = place;
+        //}
+
+        //if (other.GetComponent<People>())
+        //{
+
+        //    people = true;
+        //}
     }
 
     //.onInteract.Invoke();
@@ -61,19 +108,19 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         //if interacting with a NPC
-        if (NPC)
+        if (locationReached != null)
         {
             //call default interact text with 2 buttons
-            GiveItem();
-            Escort();
+            //GiveItem();
+            //Escort();
+            locationReached = null;
         }
 
         if (people)
         {
             Confront();
+            people = false;
         }
-        
-
     }
 
     private void DropItem()
@@ -109,80 +156,136 @@ public class PlayerInteractor : MonoBehaviour
         }
         collectedItem = null;
     }
-
+    [Button]
     private void GiveItem()
     {
         if (charData.GetLeftItem() != null)
         {
             inLeft = true;
         }
-        else if (charData.GetRightItem() != null)
+        if (charData.GetRightItem() != null)
         {
             inRight = true;
         }
-        else
+        if (charData.GetLeftItem() == null && charData.GetRightItem() == null)
         {
             Debug.Log("No items to give");
             return;
         }
 
+        //move give left and right stuff into the functions and wait till selected to continue with rest of code
+
         //choose an item to give
-        if (GiveLeft()) 
+        if (GiveLeft()) //push button for give left
         {
             Debug.Log("Giving Left Item");
             ItemGiving = charData.GetLeftItem();
         }
-        if (GiveRight())
+        if (GiveRight()) //push button for give right
         {
             Debug.Log("Giving Right Item");
             ItemGiving = charData.GetRightItem();
         }
 
+        //rest of code
+
         if (fetchTask.GetItem() == ItemGiving)
         {
             Debug.Log("Fetch Task Complete");
             fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
-            //display thankful text for item
-            if (inLeft)
-            {
-                charData.SetLeftItem(null);
-                inLeft = false;
-            }
-            else
-            {
-                charData.SetRightItem(null);
-                inRight = false;
-            }
+            RemoveItem();
         }
         //check if item is liked or hated
+        if (ItemGiving == lover.GetDislikedItem())
+        {
+            Debug.Log("Character Disliked the item, likeability went down");
+            RemoveItem();
+            //decrease playerData likeability
+            //Display dislike text
+        }
         else
         {
+            Debug.Log("Character had no opinion for the item");
+            RemoveItem();
             //display text for no opinion about item
         }
 
     }
-
+    [Button]
     private void Escort()
     {
-        //call escort request text
-        //EscortTask.GetLocation().GameObject
+        bool lover = false; //a bool to see if player has their lover
+        bool follow = false;
+
+        Debug.Log("escort pressed for " + interactLover.lovePerson.loverName);
+        //check if the player has the escort task for the lover to be escorted to
+        if (onTurnHandler.GetPlayer().GetLover() == interactLover) //target lover VS interacting lover
+        {
+            Debug.Log("Lover has been collected");
+            escortTask.ChangeTaskStage(EscortTask.TaskStage.NPC_Collected);
+            lover = true;
+            follow = true;
+        }
+        else
+        {
+            Debug.Log("Character collected");
+            follow = true;
+        }
+
         //follow system 
+        if (follow)
+        {
+            Debug.Log(interactLover.lovePerson.loverName + " is following Player");
+            interactLover.GameObject().transform.position = Vector3.SmoothDamp(interactLover.GameObject().transform.position, player.transform.position + offset, ref currentVelocity, followSpeed);
+        }
+
         //bring NPC to location for location task
+        if(lover && escortTask.GetLocation() == playerData.GetCurrentLocation())
+        {
+            Debug.Log("Lover has been escorted");
+            escortTask.ChangeTaskStage(EscortTask.TaskStage.NPC_Escorted);
+            follow = false;
+            lover = false;
+        }
+        else if (playerData.GetCurrentLocation() != null)
+        {
+            Debug.Log(interactLover.lovePerson.loverName + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
+            follow = false;
+        }
+        //how will player drop npc off? just as a trigger for the npc????
     }
 
     private void Confront()
     {
         //locate another NPC and interact with speech
-        //confront 3 choices
+
+        //check that player has confront task with this player
+
+        //if so confront 3 choices
         //instantiate text box that points to conversation folder
     }
-
+    [Button]
     private bool GiveLeft()
     {
         return true;
     }
+    [Button]
     private bool GiveRight()
     {
         return true;
+    }
+
+    private void RemoveItem()
+    {
+        if (inLeft)
+        {
+            charData.SetLeftItem(null);
+            inLeft = false;
+        }
+        else
+        {
+            charData.SetRightItem(null);
+            inRight = false;
+        }
     }
 }

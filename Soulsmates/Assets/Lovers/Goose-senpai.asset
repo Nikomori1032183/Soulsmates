@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729663a6160637b4dad0a7aabf32e87d, type: 3}
-  m_Name: Gym
+  m_Script: {fileID: 11500000, guid: ef97db844710a1245b81c41ec9ab0420, type: 3}
+  m_Name: Goose-senpai
   m_EditorClassIdentifier: 
-  locationName: Gym
-  locationZone: {fileID: 3216213509279542768, guid: 04af9130db94e3b439d86456661a7352, type: 3}
+  loverName: Goose-senpai

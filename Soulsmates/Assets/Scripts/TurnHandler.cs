@@ -31,6 +31,11 @@ public class TurnHandler : MonoBehaviour
     {
 
     }
+    
+    public PlayerData GetPlayer() //make get player
+    {
+        return player1; //return current player?
+    }
 
     [Button]
     public void ChangeTurn()
