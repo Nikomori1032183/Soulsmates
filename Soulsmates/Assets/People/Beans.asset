@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Beans
   m_EditorClassIdentifier: 
   personName: Beans
-  person: {fileID: 0}
+  person: {fileID: 8454675780990812864, guid: d173017bb5af1d9498ce0dd0b8f30a84, type: 3}

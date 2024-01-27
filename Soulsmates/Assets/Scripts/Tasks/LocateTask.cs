@@ -8,11 +8,11 @@ public class LocateTask : Task
 
     TaskStage taskStage;
 
-    public static event TaskDelegate OnNPCCollected;
+    public static event TaskDelegate OnNPCConfronted;
 
     public enum TaskStage
     {
-        Start, NPC_Collected, NPC_Escorted
+        Start, NPC_Confronted
     }
 
     void Start()
@@ -25,7 +25,7 @@ public class LocateTask : Task
 
     }
 
-    public void SetLocation(People person) //set requested item at begginning of turn
+    public void SetPerson(People person) //set requested item at begginning of turn
     {
         people = person;
     }
@@ -41,12 +41,8 @@ public class LocateTask : Task
 
         switch (taskStage)
         {
-            case TaskStage.NPC_Collected:
-                OnNPCCollected?.Invoke();
-                break;
-
-            case TaskStage.NPC_Escorted:
-
+            case TaskStage.NPC_Confronted:
+                OnNPCConfronted?.Invoke();
                 break;
 
             default:

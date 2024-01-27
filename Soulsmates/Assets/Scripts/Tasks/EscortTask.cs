@@ -25,12 +25,12 @@ public class EscortTask : Task
 
     }
 
-    public void SetLocation(Location item) //set requested item at begginning of turn
+    public void SetLocation(Location setLocation) //set requested item at begginning of turn
     {
-        location = item;
+        location = setLocation;
     }
 
-    public Location GetItem()
+    public Location GetLocation()
     {
         return location;
     }
