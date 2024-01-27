@@ -13,6 +13,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode interact;
     [SerializeField] private KeyCode sprint;
     [SerializeField] private KeyCode exit;
+    [SerializeField] private KeyCode drop;
 
     public static event InputDelegate OnForward;
     public static event InputDelegate OnBackward;
@@ -22,6 +23,7 @@ public class InputHandler : MonoBehaviour
     public static event InputDelegate OnSprint;
     public static event InputDelegate OnStopSprint;
     public static event InputDelegate OnExit;
+    public static event InputDelegate OnDrop;
 
     void Start()
     {
@@ -76,6 +78,12 @@ public class InputHandler : MonoBehaviour
         {
             Debug.Log("Exit");
             OnExit?.Invoke();
+        }
+
+        if (Input.GetKeyDown(drop))
+        {
+            Debug.Log("Drop");
+            OnDrop?.Invoke();
         }
     }
 }

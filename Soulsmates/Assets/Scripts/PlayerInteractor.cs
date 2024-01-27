@@ -21,6 +21,7 @@ public class PlayerInteractor : MonoBehaviour
     void Start()
     {
         InputHandler.OnInteract += interact;
+        InputHandler.OnInteract += drop;
         charData = GetComponent<CharacterData>();
     }
 
@@ -39,17 +40,29 @@ public class PlayerInteractor : MonoBehaviour
             if (charData.GetLeftItem() == null)
             {
                 charData.SetLeftItem(collectedItem.item);
-                Debug.Log(collectedItem.item.itemName + " was added to inventory");
+                Debug.Log(collectedItem.item.itemName + " was added to left hand");
             }
             else if (charData.GetRightItem() == null)
             {
                 charData.SetRightItem(collectedItem.item);
-                Debug.Log(collectedItem.item.itemName + " was added to inventory");
+                Debug.Log(collectedItem.item.itemName + " was added to right hand");
             }
             else
             {
                 Debug.Log("Hands are full, cannot pick up item");
             }
+        }
+    }
+
+    private void drop()
+    {
+        if (charData.GetLeftItem() != null)
+        {
+            charData.RemoveItem();
+        }
+        else
+        {
+            Debug.Log("No items in hand to drop");
         }
     }
 }

@@ -5,7 +5,11 @@ using UnityEngine;
 public class Task : MonoBehaviour
 {
     bool completed;
+    int affectionReward;
+    string taskName;
+    string taskDescription;
     public delegate void TaskDelegate();
+    TaskDelegate onTalk;
 
     void Start()
     {
@@ -25,5 +29,13 @@ public class Task : MonoBehaviour
     public bool IsCompleted()
     {
         return completed;
+    }
+
+    public void Reward()
+    {
+        if (completed)
+        {
+            
+        }
     }
 }
