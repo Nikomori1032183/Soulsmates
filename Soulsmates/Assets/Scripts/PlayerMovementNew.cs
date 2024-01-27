@@ -28,6 +28,8 @@ public class PlayerMovementNew : MonoBehaviour
     private void MoveSprint()
     {
         curSpeed = sprint;
+        StartCoroutine(WaitFive()); //stamina system here
+        Walk();
     }
     private void Walk()
     {
@@ -48,5 +50,10 @@ public class PlayerMovementNew : MonoBehaviour
     private void MoveRight()
     {
         transform.position += Vector3.right * curSpeed * Time.deltaTime;
+    }
+
+    IEnumerator WaitFive()
+    {
+        yield return new WaitForSeconds(5);
     }
 }

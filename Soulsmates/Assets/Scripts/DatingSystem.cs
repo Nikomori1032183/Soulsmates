@@ -5,7 +5,7 @@ using UnityEngine;
 public class DatingSystem : MonoBehaviour
 {
     PlayerData playerData;
-    List<Task> taskList = new List<Task>();
+    
     
 
     // Start is called before the first frame update

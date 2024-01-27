@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using VInspector;
 
 public class Timer : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Timer : MonoBehaviour
     float hourCounter;
     [SerializeField] int dayTime = 0;
     [SerializeField] int day = 0;
-    int seconds = 36;
+    int seconds;
 
     bool timerActive;
 
@@ -47,7 +48,7 @@ public class Timer : MonoBehaviour
             day++;
             dayTime = 0;
         }
-        timerText.text = "Day " + day + "\n" + dayTime + ":" + seconds;
+        timerText.text = "Day " + day + "\n" + dayTime + ":" + Mathf.Round(hourCounter);
     }
 
     void ResetTimer()
