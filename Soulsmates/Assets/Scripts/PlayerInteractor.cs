@@ -296,8 +296,7 @@ public class PlayerInteractor : MonoBehaviour
             fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
             RemoveItem();
             TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
-            tb.SetDirectory(""); //Display retrieved liked item text
-            tb.
+            tb.SetDirectory(""); //Display retrieved liked item 
         }
         //check if item is liked or hated
         if (ItemGiving == lover.GetDislikedItem())
