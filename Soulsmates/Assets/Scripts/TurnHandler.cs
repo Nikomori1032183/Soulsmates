@@ -39,7 +39,23 @@ public class TurnHandler : MonoBehaviour
 
     public PlayerData GetPlayer()
     {
-        return player1; //just put this here to stop error code
+        switch (currentPlayer)
+        {
+            case Player.Player_1:
+                return player1;
+
+            case Player.Player_2:
+                return player2;
+
+            case Player.Player_3:
+                return player3;
+
+            case Player.Player_4:
+                return player4;
+
+            default:
+                return null;
+        }
     }
 
     [Button]
@@ -73,26 +89,5 @@ public class TurnHandler : MonoBehaviour
         }
 
         OnTurnChange?.Invoke();
-    }
-
-    public PlayerData GetCurrentPlayerData()
-    {
-        switch (currentPlayer)
-        {
-            case Player.Player_1:
-                return player1;
-
-            case Player.Player_2:
-                return player2;
-
-            case Player.Player_3:
-                return player3;
-
-            case Player.Player_4:
-                return player4;
-
-            default:
-                return null;
-        }
     }
 }

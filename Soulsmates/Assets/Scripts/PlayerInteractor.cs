@@ -39,6 +39,13 @@ public class PlayerInteractor : MonoBehaviour
     Location locationReached;
     People personConfronted;
 
+    Sabotage sabotage;
+
+    //Canvas
+    [SerializeField] Canvas playerInteractCanvas;
+    [SerializeField] Canvas playerGiveCanvas;
+    [SerializeField] Canvas confrontCanvas;
+
     //[SerializeField] Animator doorAnimator;
 
     bool keyCollected = false;
@@ -61,15 +68,6 @@ public class PlayerInteractor : MonoBehaviour
         charData = GetComponent<CharacterData>();
     }
 
-    private void LateUpdate()
-    {
-        if (interactLover != null) //later change to when follow is true
-        {
-            //interactLover.GameObject().transform.position = player.transform.position + offset;
-            
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         //if object in range is a collectable item
@@ -85,7 +83,6 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("A Lover is Near");
             InteractLover interact = other.GetComponent<InteractLover>();
             interactLover = interact;
-            Debug.Log(interactLover.lover.GetName());
         }
 
         //if (other.GetComponent<Location>() != null)
@@ -94,11 +91,18 @@ public class PlayerInteractor : MonoBehaviour
         //    locationReached = place;
         //}
 
-        if (other.GetComponent<People>() != null)
+        //if (other.GetComponent<People>() != null)
+        //{
+        //    Debug.Log("A random NPC is near");
+        //    People person = other.GetComponent<People>();
+        //    personConfronted = person;
+        //}
+
+        if(other.GetComponent<Sabotage>() != null)
         {
-            Debug.Log("A random NPC is near");
-            People person = other.GetComponent<People>();
-            personConfronted = person;
+            Debug.Log("Sabotage Available");
+            Sabotage sabo = other.GetComponent<Sabotage>();
+            sabotage = sabo;
         }
     }
 
@@ -113,20 +117,23 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         //if interacting with a NPC
-        if (locationReached != null)
+        if (interactLover != null)
         {
             //call default interact text with 2 buttons
+            playerInteractCanvas.GameObject().SetActive(true);
             TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
-            tb.SetDirectory("");
-            //set 2 buttons to be active
-                //GiveItem();
-                //Escort();
-            locationReached = null;
+            //tb.SetDirectory("");
+            interactLover = null;
         }
 
         if (personConfronted != null)
         {
             Confront();
+        }
+
+        if (sabotage != null)
+        {
+            OnSabotage();
         }
     }
 
@@ -163,9 +170,10 @@ public class PlayerInteractor : MonoBehaviour
         }
         collectedItem = null;
     }
-    [Button]
-    private void GiveItem()
+    
+    public void GiveItem()
     {
+        playerInteractCanvas.GameObject().SetActive(false);
         if (charData.GetLeftItem() != null)
         {
             inLeft = true;
@@ -181,10 +189,12 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         //set UI Buttons for Give left and right to active
+        playerGiveCanvas.GameObject().SetActive(true);
     }
-    [Button]
-    private void Escort()
+    
+    public void Escort()
     {
+        playerInteractCanvas.GameObject().SetActive(false);
         bool lover = false;
         bool follow = false;
 
@@ -211,16 +221,16 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         //check if npc is at a location
-        if(lover && escortTask.GetLocation() == playerData.GetCurrentLocation())
+        if(lover && escortTask.GetLocation() == charData.GetCurrentLocation())
         {
             Debug.Log("Lover has been escorted");
             escortTask.ChangeTaskStage(EscortTask.TaskStage.NPC_Escorted);
             follow = false;
             lover = false;
         }
-        else if (playerData.GetCurrentLocation() != null)
+        else if (charData.GetCurrentLocation() != null)
         {
-            Debug.Log(interactLover.lover.GetName() + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
+            Debug.Log(interactLover.lover.GetName() + " has been dropped off at " + charData.GetCurrentLocation().locationName);
             follow = false;
         }
         //how will player drop npc off? just as a trigger for the npc????
@@ -235,6 +245,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             //activate/display buttons and text
             //Option A, B, C
+            confrontCanvas.GameObject().SetActive(true);
         }
         else
         {
@@ -244,14 +255,16 @@ public class PlayerInteractor : MonoBehaviour
         //instantiate text box that points to conversation folder
     }
 
-    void OptionA()
+    public void OptionA()
     {
+        confrontCanvas.GameObject().SetActive(false);
         Debug.Log("plays says small insult");
         playerData.AddAffection(10);
     }
 
-    void OptionB()
+    public void OptionB()
     {
+        confrontCanvas.GameObject().SetActive(false);
         Debug.Log("plays says medium insult");
         probability = 1f / 2f; //50 percent chance (a 1 in 2 chance)
         if (Random.Range(0f, 1f) <= probability)
@@ -260,8 +273,9 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    void OptionC()
+    public void OptionC()
     {
+        confrontCanvas.GameObject().SetActive(false);
         Debug.Log("plays says large insult");
         probability = 1f / 10f; //10 percent chance (a 1 in 2 chance)
         if (Random.Range(0f, 1f) <= probability)
@@ -270,17 +284,17 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-
-    [Button]
-    private void GiveLeft()
+    public void GiveLeft()
     {
+        playerGiveCanvas.GameObject().SetActive(false);
         Debug.Log("Giving Left Item");
         ItemGiving = charData.GetLeftItem();
         ItemGive();
     }
-    [Button]
-    private void GiveRight()
+    
+    public void GiveRight()
     {
+        playerGiveCanvas.GameObject().SetActive(false);
         Debug.Log("Giving Right Item");
         ItemGiving = charData.GetRightItem();
         ItemGive();
@@ -295,8 +309,9 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("Fetch Task Complete");
             fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
             RemoveItem();
+            playerData.AddAffection(20);
             TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
-            tb.SetDirectory(""); //Display retrieved liked item 
+            tb.SetDirectory(""); //Display retrieved liked item text
         }
         //check if item is liked or hated
         if (ItemGiving == lover.GetDislikedItem())
@@ -330,5 +345,10 @@ public class PlayerInteractor : MonoBehaviour
             charData.SetRightItem(null);
             inRight = false;
         }
+    }
+
+    private void OnSabotage()
+    {
+
     }
 }

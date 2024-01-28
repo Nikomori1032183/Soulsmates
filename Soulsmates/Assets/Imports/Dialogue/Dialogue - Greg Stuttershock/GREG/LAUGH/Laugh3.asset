@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7770e9c2df9684ca3d1f6a8817f398, type: 3}
+  m_Name: Laugh3
+  m_EditorClassIdentifier: 
+  text: '...Have a thing for me! '
+  font: {fileID: 0}
+  size: 32
+  color: {r: 1, g: 1, b: 1, a: 1}
+  alignment: 0
+  textScroll: 1
+  scrollInterval: 0.1
+  characterName: Greg Stuttershock
+  portrait: {fileID: 0}
+  layoutType: 3
+  characterPosition: 0

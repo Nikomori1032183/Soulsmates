@@ -8,7 +8,6 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     string playerName;
-    [SerializeField] Location currentLocation;
     List<Task> playerTasks = new List<Task>();
     int affection;
     Lover lover;
@@ -23,6 +22,7 @@ public class PlayerData : MonoBehaviour
     {
         
     }
+
     public void SetName(string name)
     {
         this.playerName = name;
@@ -42,19 +42,15 @@ public class PlayerData : MonoBehaviour
     {
         playerTasks.Remove(task);
     }
+
+    public void ResetTasks()
+    {
+        playerTasks.Clear();
+    }
+
     public Lover GetLover()
     {
         return lover;
-    }
-
-    public void SetCurrentLocation(Location here)
-    {
-        this.currentLocation = here;
-    }
-
-    public Location GetCurrentLocation()
-    {
-        return currentLocation;
     }
 
     public void AddAffection(int love)
@@ -72,6 +68,8 @@ public class PlayerData : MonoBehaviour
         return affection;
     }
 
-    // set random lover method 
-    // 
+    public void SetLover(Lover lover)
+    {
+        this.lover = lover;
+    }
 }
