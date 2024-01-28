@@ -247,7 +247,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 21771c059d6a33a4dbae735a0404525b, type: 3}
     - target: {fileID: 4448849650791311548, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
       propertyPath: pitchDeviation
-      value: 0.01
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448849650791311548, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: scrollAudioType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376127378946665746, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
       propertyPath: m_Name

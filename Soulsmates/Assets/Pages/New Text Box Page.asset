@@ -18,7 +18,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 1}
   alignment: 513
   textScroll: 1
-  scrollInterval: 0.15
+  scrollInterval: 0.125
   characterName: name
   portrait: {fileID: 0}
   layoutType: 0

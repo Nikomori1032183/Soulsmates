@@ -57,13 +57,21 @@ public class PlayerData : MonoBehaviour
         return currentLocation;
     }
 
-    public void SetAffection(int love)
+    public void AddAffection(int love)
     {
         this.affection += love;
+    }
+
+    public void RemoveAffection(int love)
+    {
+        this.affection -= love;
     }
 
     public int GetAffection()
     {
         return affection;
     }
+
+    // set random lover method 
+    // 
 }
