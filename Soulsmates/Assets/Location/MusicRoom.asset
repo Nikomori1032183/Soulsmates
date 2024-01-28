@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729663a6160637b4dad0a7aabf32e87d, type: 3}
-  m_Name: CookingRoom
+  m_Script: {fileID: 11500000, guid: e1c5c0adbdbecb3468cbb2301af9e6d3, type: 3}
+  m_Name: MusicRoom
   m_EditorClassIdentifier: 
-  locationName: CookingRoom
-  locationZone: {fileID: 4641939454580993581, guid: c349f64691b91d44e9149728b1373ee7, type: 3}
+  locationName: MusicRoom
+  locationZone: {fileID: 7385193375037617975, guid: e47e4cb5b3d13184ca24d7a57587352e, type: 3}

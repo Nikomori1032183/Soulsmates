@@ -10,7 +10,7 @@ public class Lover : MonoBehaviour
 {
     [SerializeField] GameLogic gameLogic;
 
-    [SerializeField] string name;
+    [SerializeField] public string loverName;
     [SerializeField] Sprite sprite;
 
     Item likedItem, dislikedItem;
@@ -47,7 +47,7 @@ public class Lover : MonoBehaviour
 
     public string GetName()
     {
-        return name;
+        return loverName;
     }
 
     public Sprite GetSprite()

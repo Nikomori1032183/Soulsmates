@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    string name;
+    string playerName;
+    Location currentLocation;
     List<Task> playerTasks = new List<Task>();
     int affection;
+    Lover lover;
     
 
     void Start()
@@ -23,12 +25,12 @@ public class PlayerData : MonoBehaviour
     }
     public void SetName(string name)
     {
-        this.name = name;
+        this.playerName = name;
     }
 
     public string GetName()
     {
-        return name;
+        return playerName;
     }
 
     public void AddTask(Task task)
@@ -39,5 +41,24 @@ public class PlayerData : MonoBehaviour
     public void RemoveTask(Task task)
     {
         playerTasks.Remove(task);
+    }
+    public Lover GetLover()
+    {
+        return lover;
+    }
+
+    public void SetCurrentLocation(Location here)
+    {
+        this.currentLocation = here;
+    }
+
+    public Location GetCurrentLocation()
+    {
+        return currentLocation;
+    }
+
+    public void SetAffection(int love)
+    {
+        this.affection += love;
     }
 }
