@@ -5,14 +5,14 @@ using UnityEngine;
 public class InteractLocation : MonoBehaviour
 {
     public Location location;
-    [SerializeField] TurnHandler onTurnHandler;
+    [SerializeField] CharacterData characterData;
 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            onTurnHandler.GetPlayer().SetCurrentLocation(location);
+            characterData.SetCurrentLocation(location);
         }
     }
 
@@ -20,7 +20,7 @@ public class InteractLocation : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            onTurnHandler.GetPlayer().SetCurrentLocation(null);
+            characterData.SetCurrentLocation(null);
         }
     }
 }
