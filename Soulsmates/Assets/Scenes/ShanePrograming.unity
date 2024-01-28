@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 46510893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.4, y: 1, z: -33.7}
+  m_LocalPosition: {x: -23.51, y: 1, z: -33.7}
   m_LocalScale: {x: 2.39, y: 2.39, z: 2.39}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1797,6 +1797,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1614940132}
   - component: {fileID: 1614940131}
+  - component: {fileID: 1614940133}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1837,6 +1838,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1614940133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614940130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32092c5f8b0be444f853315ea982cce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
 --- !u!1 &1896943610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,6 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2072368604}
+  followSpeed: 0.15
 --- !u!114 &2072368612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2115,6 +2133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed8a50425484e14fb73426116492de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLocation: {fileID: 0}
 --- !u!4 &89397141065271513
 Transform:
   m_ObjectHideFlags: 0
@@ -2140,6 +2159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89397141065271513}
   - component: {fileID: 7960601584097574413}
+  - component: {fileID: 7960601584097574414}
   m_Layer: 0
   m_Name: Cafeteria
   m_TagString: Untagged
@@ -2166,7 +2186,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 18.97, y: 8.99, z: 14.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &357948807280701850
 GameObject:
@@ -2293,7 +2313,7 @@ Transform:
   m_GameObject: {fileID: 2178808360489861475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -38.98, y: 1.53, z: -33.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2324,6 +2344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327021027166436725}
   - component: {fileID: 6014310463622366108}
+  - component: {fileID: 6014310463622366109}
   m_Layer: 0
   m_Name: Stairwell
   m_TagString: Untagged
@@ -2348,7 +2369,7 @@ Transform:
   m_GameObject: {fileID: 4641939455522125662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -21.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2385,6 +2406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2105115552154358667}
   - component: {fileID: 5384683885294253832}
+  - component: {fileID: 5384683885294253833}
   m_Layer: 0
   m_Name: Gym
   m_TagString: Untagged
@@ -2465,6 +2487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2346022369418352258}
   - component: {fileID: 8036941682901777288}
+  - component: {fileID: 8036941682901777289}
   m_Layer: 0
   m_Name: Cooking Room
   m_TagString: Untagged
@@ -2523,7 +2546,7 @@ Transform:
   m_GameObject: {fileID: 6205112291520245158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 37.3, y: 0.4, z: 35.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2550,6 +2573,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 42.9, y: 5.2, z: 33.23}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5384683885294253833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216213509092890564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: f6a17121204bd80498fb5371c3bc9618, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!33 &5485173567121988763
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2648,8 +2685,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 21.67, y: 3.5, z: 16.4}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6014310463622366109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178808360489861475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: e26040efebf36394e876d5683b9b9064, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!1 &6205112291520245158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,6 +2711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5303988339787693036}
   - component: {fileID: 339652109301007698}
+  - component: {fileID: 6205112291520245159}
   m_Layer: 0
   m_Name: Janitor Closet
   m_TagString: Untagged
@@ -2667,6 +2719,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6205112291520245159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205112291520245158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: 7bb5a2afcb80ddc40b0a87e20b85b0b2, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!4 &7322601459391217938
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,6 +2758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5950191630396115937}
   - component: {fileID: 3043412362864082192}
+  - component: {fileID: 7385193375100652020}
   m_Layer: 0
   m_Name: Music Room
   m_TagString: Untagged
@@ -2699,6 +2766,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7385193375100652020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385193375100652019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: 9c37ab18265c1214eb55d8b70cbb29d1, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!4 &7399792158827132420
 Transform:
   m_ObjectHideFlags: 0
@@ -2775,6 +2856,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 38.41, y: 5.63, z: 12.52}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7960601584097574414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326867953882747205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: a74649dc5ed39614c9bd1279dd2c380a, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!65 &8036941682901777288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2796,6 +2891,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8036941682901777289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641939455522125662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c556ce7750c9c44ac7dcb544ba814d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 11400000, guid: bfb386009d141c045883813bc2d9cdd4, type: 2}
+  onTurnHandler: {fileID: 1614940133}
 --- !u!23 &8067573432108162359
 MeshRenderer:
   m_ObjectHideFlags: 0

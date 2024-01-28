@@ -30,7 +30,7 @@ public class ConfrontTask : Task
         people = person;
     }
 
-    public People GetItem()
+    public People GetPerson()
     {
         return people;
     }

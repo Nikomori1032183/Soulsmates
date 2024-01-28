@@ -20,6 +20,7 @@ public class PlayerInteractor : MonoBehaviour
     //Interactables
     CollectableItem collectedItem;
     InteractLover interactLover;
+    InteractLocation interactLocation;
 
     //Data
     CharacterData charData;
@@ -43,7 +44,6 @@ public class PlayerInteractor : MonoBehaviour
     int range = 4;
     [SerializeField] float followSpeed = 0.55f;
 
-    bool people;
     bool inLeft;
     bool inRight;
 
@@ -90,11 +90,12 @@ public class PlayerInteractor : MonoBehaviour
         //    locationReached = place;
         //}
 
-        //if (other.GetComponent<People>())
-        //{
-
-        //    people = true;
-        //}
+        if (other.GetComponent<People>() != null)
+        {
+            Debug.Log("A random NPC is near");
+            People person = other.GetComponent<People>();
+            personConfronted = person;
+        }
     }
 
     //.onInteract.Invoke();
@@ -116,10 +117,9 @@ public class PlayerInteractor : MonoBehaviour
             locationReached = null;
         }
 
-        if (people)
+        if (personConfronted != null)
         {
             Confront();
-            people = false;
         }
     }
 
@@ -239,7 +239,7 @@ public class PlayerInteractor : MonoBehaviour
             interactLover.GameObject().transform.position = Vector3.SmoothDamp(interactLover.GameObject().transform.position, player.transform.position + offset, ref currentVelocity, followSpeed);
         }
 
-        //bring NPC to location for location task
+        //check if npc is at a location
         if(lover && escortTask.GetLocation() == playerData.GetCurrentLocation())
         {
             Debug.Log("Lover has been escorted");
@@ -260,7 +260,25 @@ public class PlayerInteractor : MonoBehaviour
         //locate another NPC and interact with speech
 
         //check that player has confront task with this player
+        if (confrontTask.GetPerson() == personConfronted)
+        {
+            //A
+            Debug.Log("plays says small insult");
+            playerData.SetAffection(10);
 
+            //B
+            Debug.Log("plays says medium insult");
+
+            playerData.SetAffection(20);
+
+            //C
+            Debug.Log("plays says large insult");
+            playerData.SetAffection(40);
+        }
+        else
+        {
+            Debug.Log("Cannot confront this person");
+        }
         //if so confront 3 choices
         //instantiate text box that points to conversation folder
     }

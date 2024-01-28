@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class InteractLocation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Location location;
+    [SerializeField] TurnHandler onTurnHandler;
+
+
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            onTurnHandler.GetPlayer().SetCurrentLocation(location);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            onTurnHandler.GetPlayer().SetCurrentLocation(null);
+        }
     }
 }
