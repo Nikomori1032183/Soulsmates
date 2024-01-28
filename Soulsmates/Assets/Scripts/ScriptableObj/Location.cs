@@ -7,11 +7,4 @@ using UnityEngine;
 public class Location : ScriptableObject
 {
     public string locationName;
-    public GameObject locationZone;
-    PlayerData playerdata;
-
-    //OnTriggerEnter(Collider other)
-    //{
-    //    playerdata.SetCurrentLocation();
-    //}
 }

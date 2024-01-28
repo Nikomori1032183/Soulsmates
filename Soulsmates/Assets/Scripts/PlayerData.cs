@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     string playerName;
-    Location currentLocation;
+    [SerializeField] Location currentLocation;
     List<Task> playerTasks = new List<Task>();
     int affection;
     Lover lover;
@@ -60,5 +60,10 @@ public class PlayerData : MonoBehaviour
     public void SetAffection(int love)
     {
         this.affection += love;
+    }
+
+    public int GetAffection()
+    {
+        return affection;
     }
 }
