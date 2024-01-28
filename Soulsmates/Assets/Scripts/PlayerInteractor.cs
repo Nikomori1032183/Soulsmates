@@ -30,7 +30,7 @@ public class PlayerInteractor : MonoBehaviour
     PlayerData playerData;
 
     //Tasks
-    FetchTask fetchTask;
+    [SerializeField] FetchTask fetchTask;
     EscortTask escortTask;
     ConfrontTask confrontTask;
 
@@ -122,7 +122,7 @@ public class PlayerInteractor : MonoBehaviour
             //call default interact text with 2 buttons
             playerInteractCanvas.GameObject().SetActive(true);
             TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
-            //tb.SetDirectory("");
+            //tb.SetDirectory(lover.loverDialogue(interactLover));
             interactLover = null;
         }
 
@@ -287,17 +287,25 @@ public class PlayerInteractor : MonoBehaviour
     public void GiveLeft()
     {
         playerGiveCanvas.GameObject().SetActive(false);
-        Debug.Log("Giving Left Item");
-        ItemGiving = charData.GetLeftItem();
-        ItemGive();
+        if (inLeft)
+        {
+            Debug.Log("Giving Left Item");
+            ItemGiving = charData.GetLeftItem();
+            ItemGive();
+        }
+        
     }
     
     public void GiveRight()
     {
         playerGiveCanvas.GameObject().SetActive(false);
-        Debug.Log("Giving Right Item");
-        ItemGiving = charData.GetRightItem();
-        ItemGive();
+        if (inRight)
+        {
+            Debug.Log("Giving Right Item");
+            ItemGiving = charData.GetRightItem();
+            ItemGive();
+        }
+        
     }
 
     private void ItemGive()
@@ -340,10 +348,14 @@ public class PlayerInteractor : MonoBehaviour
             charData.SetLeftItem(null);
             inLeft = false;
         }
-        else
+        else if (inRight)
         {
             charData.SetRightItem(null);
             inRight = false;
+        }
+        else
+        {
+            Debug.Log("No items to remove");
         }
     }
 
