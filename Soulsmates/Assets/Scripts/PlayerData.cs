@@ -23,6 +23,7 @@ public class PlayerData : MonoBehaviour
     {
         
     }
+
     public void SetName(string name)
     {
         this.playerName = name;
@@ -42,6 +43,12 @@ public class PlayerData : MonoBehaviour
     {
         playerTasks.Remove(task);
     }
+
+    public void ResetTasks()
+    {
+        playerTasks.Clear();
+    }
+
     public Lover GetLover()
     {
         return lover;
@@ -72,6 +79,8 @@ public class PlayerData : MonoBehaviour
         return affection;
     }
 
-    // set random lover method 
-    // 
+    public void SetLover(Lover lover)
+    {
+        this.lover = lover;
+    }
 }
