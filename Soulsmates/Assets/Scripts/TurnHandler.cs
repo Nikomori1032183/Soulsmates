@@ -18,12 +18,12 @@ public class TurnHandler : MonoBehaviour
 
     Player currentPlayer = Player.Player_1;
 
-    public delegate void TurnDelegate(PlayerData currentPlayerData);
+    public delegate void TurnDelegate();
+    public delegate void PlayerDataTurnDelegate(PlayerData currentPlayerData);
 
-    //public delegate PlayerData TurnDelegate();
-    //public delegate void TurnDelegate();
 
     public static event TurnDelegate OnTurnChange;
+    public static event PlayerDataTurnDelegate OnTurnChangePlayerData;
 
     void Start()
     {
@@ -49,27 +49,50 @@ public class TurnHandler : MonoBehaviour
         {
             case Player.Player_1:
                 currentPlayer = Player.Player_2;
-                OnTurnChange?.Invoke(player2);
+                OnTurnChangePlayerData?.Invoke(player2);
                 Debug.Log("Player 2's Turn");
                 break;
 
             case Player.Player_2:
                 currentPlayer = Player.Player_3;
-                OnTurnChange?.Invoke(player3);
+                OnTurnChangePlayerData?.Invoke(player3);
                 Debug.Log("Player 3's Turn");
                 break;
 
             case Player.Player_3:
                 currentPlayer = Player.Player_4;
-                OnTurnChange?.Invoke(player4);
+                OnTurnChangePlayerData?.Invoke(player4);
                 Debug.Log("Player 4's Turn");
                 break;
 
             case Player.Player_4:
                 currentPlayer = Player.Player_1;
-                OnTurnChange?.Invoke(player1);
+                OnTurnChangePlayerData?.Invoke(player1);
                 Debug.Log("Player 1's Turn");
                 break;
+        }
+
+        OnTurnChange?.Invoke();
+    }
+
+    public PlayerData GetCurrentPlayerData()
+    {
+        switch (currentPlayer)
+        {
+            case Player.Player_1:
+                return player1;
+
+            case Player.Player_2:
+                return player2;
+
+            case Player.Player_3:
+                return player3;
+
+            case Player.Player_4:
+                return player4;
+
+            default:
+                return null;
         }
     }
 }
