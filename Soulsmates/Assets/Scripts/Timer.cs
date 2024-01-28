@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using VInspector;
+using static InputHandler;
 
 public class Timer : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Timer : MonoBehaviour
     int seconds;
 
     bool timerActive;
+
+    public delegate void TimerDelegate();
+
+    public static event TimerDelegate OnTimerEnd;
 
     void Start()
     {
@@ -66,8 +71,10 @@ public class Timer : MonoBehaviour
 
     void EndTimer()
     {
+        OnTimerEnd?.Invoke();
         timerActive = false;
         timeLeft = 0.0f;
+        
     }
 
     void PauseTimer(bool pause)
