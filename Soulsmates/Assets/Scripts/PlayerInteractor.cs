@@ -6,16 +6,19 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using VInspector;
 
 
 public class PlayerInteractor : MonoBehaviour
 {
     //core
+    public GameObject textBoxPrefab;
     public GameObject player;
     Lover lover;
     UnityEvent onInteract;
     TurnHandler onTurnHandler;
+
 
     //Interactables
     CollectableItem collectedItem;
@@ -35,7 +38,6 @@ public class PlayerInteractor : MonoBehaviour
     Item ItemGiving;
     Location locationReached;
     People personConfronted;
-    LovePerson LovePerson;
 
     //[SerializeField] Animator doorAnimator;
 
@@ -46,6 +48,8 @@ public class PlayerInteractor : MonoBehaviour
 
     bool inLeft;
     bool inRight;
+
+    float probability;
 
     Vector3 offset = new Vector3(-1, 0, 0);
     Vector3 currentVelocity;
@@ -81,7 +85,7 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("A Lover is Near");
             InteractLover interact = other.GetComponent<InteractLover>();
             interactLover = interact;
-            Debug.Log(interactLover.lovePerson.loverName);
+            Debug.Log(interactLover.lover.GetName());
         }
 
         //if (other.GetComponent<Location>() != null)
@@ -112,8 +116,11 @@ public class PlayerInteractor : MonoBehaviour
         if (locationReached != null)
         {
             //call default interact text with 2 buttons
-            //GiveItem();
-            //Escort();
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+            //set 2 buttons to be active
+                //GiveItem();
+                //Escort();
             locationReached = null;
         }
 
@@ -173,51 +180,15 @@ public class PlayerInteractor : MonoBehaviour
             return;
         }
 
-        //move give left and right stuff into the functions and wait till selected to continue with rest of code
-
-        //choose an item to give
-        if (GiveLeft()) //push button for give left
-        {
-            Debug.Log("Giving Left Item");
-            ItemGiving = charData.GetLeftItem();
-        }
-        if (GiveRight()) //push button for give right
-        {
-            Debug.Log("Giving Right Item");
-            ItemGiving = charData.GetRightItem();
-        }
-
-        //rest of code
-
-        if (fetchTask.GetItem() == ItemGiving)
-        {
-            Debug.Log("Fetch Task Complete");
-            fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
-            RemoveItem();
-        }
-        //check if item is liked or hated
-        if (ItemGiving == lover.GetDislikedItem())
-        {
-            Debug.Log("Character Disliked the item, likeability went down");
-            RemoveItem();
-            //decrease playerData likeability
-            //Display dislike text
-        }
-        else
-        {
-            Debug.Log("Character had no opinion for the item");
-            RemoveItem();
-            //display text for no opinion about item
-        }
-
+        //set UI Buttons for Give left and right to active
     }
     [Button]
     private void Escort()
     {
-        bool lover = false; //a bool to see if player has their lover
+        bool lover = false;
         bool follow = false;
 
-        Debug.Log("escort pressed for " + interactLover.lovePerson.loverName);
+        Debug.Log("escort pressed for " + interactLover.lover.GetName());
         //check if the player has the escort task for the lover to be escorted to
         if (onTurnHandler.GetPlayer().GetLover() == interactLover) //target lover VS interacting lover
         {
@@ -235,7 +206,7 @@ public class PlayerInteractor : MonoBehaviour
         //follow system 
         if (follow)
         {
-            Debug.Log(interactLover.lovePerson.loverName + " is following Player");
+            Debug.Log(interactLover.lover.GetName() + " is following Player");
             interactLover.GameObject().transform.position = Vector3.SmoothDamp(interactLover.GameObject().transform.position, player.transform.position + offset, ref currentVelocity, followSpeed);
         }
 
@@ -249,7 +220,7 @@ public class PlayerInteractor : MonoBehaviour
         }
         else if (playerData.GetCurrentLocation() != null)
         {
-            Debug.Log(interactLover.lovePerson.loverName + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
+            Debug.Log(interactLover.lover.GetName() + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
             follow = false;
         }
         //how will player drop npc off? just as a trigger for the npc????
@@ -262,18 +233,8 @@ public class PlayerInteractor : MonoBehaviour
         //check that player has confront task with this player
         if (confrontTask.GetPerson() == personConfronted)
         {
-            //A
-            Debug.Log("plays says small insult");
-            playerData.SetAffection(10);
-
-            //B
-            Debug.Log("plays says medium insult");
-
-            playerData.SetAffection(20);
-
-            //C
-            Debug.Log("plays says large insult");
-            playerData.SetAffection(40);
+            //activate/display buttons and text
+            //Option A, B, C
         }
         else
         {
@@ -282,15 +243,80 @@ public class PlayerInteractor : MonoBehaviour
         //if so confront 3 choices
         //instantiate text box that points to conversation folder
     }
-    [Button]
-    private bool GiveLeft()
+
+    void OptionA()
     {
-        return true;
+        Debug.Log("plays says small insult");
+        playerData.AddAffection(10);
+    }
+
+    void OptionB()
+    {
+        Debug.Log("plays says medium insult");
+        probability = 1f / 2f; //50 percent chance (a 1 in 2 chance)
+        if (Random.Range(0f, 1f) <= probability)
+        {
+            playerData.AddAffection(20);
+        }
+    }
+
+    void OptionC()
+    {
+        Debug.Log("plays says large insult");
+        probability = 1f / 10f; //10 percent chance (a 1 in 2 chance)
+        if (Random.Range(0f, 1f) <= probability)
+        {
+            playerData.AddAffection(40);
+        }
+    }
+
+
+    [Button]
+    private void GiveLeft()
+    {
+        Debug.Log("Giving Left Item");
+        ItemGiving = charData.GetLeftItem();
+        ItemGive();
     }
     [Button]
-    private bool GiveRight()
+    private void GiveRight()
     {
-        return true;
+        Debug.Log("Giving Right Item");
+        ItemGiving = charData.GetRightItem();
+        ItemGive();
+    }
+
+    private void ItemGive()
+    {
+        //disable buttons
+
+        if (fetchTask.GetItem() == ItemGiving)
+        {
+            Debug.Log("Fetch Task Complete");
+            fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
+            RemoveItem();
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory(""); //Display retrieved liked item text
+            tb.
+        }
+        //check if item is liked or hated
+        if (ItemGiving == lover.GetDislikedItem())
+        {
+            Debug.Log("Character Disliked the item, likeability went down");
+            RemoveItem();
+            playerData.RemoveAffection(10);
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+            //Display dislike text
+        }
+        else
+        {
+            Debug.Log("Character had no opinion for the item");
+            RemoveItem();
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+            //display text for no opinion about item
+        }
     }
 
     private void RemoveItem()
