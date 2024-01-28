@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 46510897}
   - component: {fileID: 46510896}
   - component: {fileID: 46510895}
+  - component: {fileID: 46510899}
   m_Layer: 0
   m_Name: Goose
   m_TagString: NPC
@@ -243,6 +244,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46510893}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &46510899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46510893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bbcf0ba02bf4a49894beecf75dccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLogic: {fileID: 1614940131}
+  loverName: Goose
+  sprite: {fileID: 0}
 --- !u!1 &98355023
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +540,7 @@ GameObject:
   - component: {fileID: 257518798}
   - component: {fileID: 257518797}
   - component: {fileID: 257518796}
+  - component: {fileID: 257518800}
   m_Layer: 0
   m_Name: Greg
   m_TagString: NPC
@@ -631,6 +648,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257518794}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &257518800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257518794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bbcf0ba02bf4a49894beecf75dccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLogic: {fileID: 1614940131}
+  loverName: Greg
+  sprite: {fileID: 0}
 --- !u!1 &390852794
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +729,7 @@ GameObject:
   - component: {fileID: 532056084}
   - component: {fileID: 532056083}
   - component: {fileID: 532056082}
+  - component: {fileID: 532056086}
   m_Layer: 0
   m_Name: Nyal
   m_TagString: NPC
@@ -804,6 +837,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532056080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &532056086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532056080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bbcf0ba02bf4a49894beecf75dccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLogic: {fileID: 1614940131}
+  loverName: Nyal
+  sprite: {fileID: 0}
 --- !u!1 &611440045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1149,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1105460928}
+  - {fileID: 1749312915}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1643,6 +1692,7 @@ GameObject:
   - component: {fileID: 1532376588}
   - component: {fileID: 1532376587}
   - component: {fileID: 1532376586}
+  - component: {fileID: 1532376590}
   m_Layer: 0
   m_Name: Onna
   m_TagString: NPC
@@ -1750,6 +1800,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532376584}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1532376590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532376584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bbcf0ba02bf4a49894beecf75dccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLogic: {fileID: 1614940131}
+  loverName: Onna
+  sprite: {fileID: 0}
 --- !u!1 &1588126401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1919,68 @@ MonoBehaviour:
   player2: {fileID: 0}
   player3: {fileID: 0}
   player4: {fileID: 0}
+--- !u!1001 &1749312914
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 671544640}
+    m_Modifications:
+    - target: {fileID: 7376127378946665746, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_Name
+      value: Text Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -960
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -362.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+--- !u!4 &1749312915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7985261366495147289, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
+  m_PrefabInstance: {fileID: 1749312914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1896943610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,6 +2234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541be706d4427e449a38db78b53f1edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textBoxPrefab: {fileID: 7376127378946665746, guid: 2afdf5b77b3d3ae40bc2129b9467d341, type: 3}
   player: {fileID: 2072368604}
   followSpeed: 0.15
 --- !u!114 &2072368612

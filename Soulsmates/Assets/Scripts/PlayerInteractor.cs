@@ -6,16 +6,19 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using VInspector;
 
 
 public class PlayerInteractor : MonoBehaviour
 {
     //core
+    public GameObject textBoxPrefab;
     public GameObject player;
     Lover lover;
     UnityEvent onInteract;
     TurnHandler onTurnHandler;
+
 
     //Interactables
     CollectableItem collectedItem;
@@ -35,7 +38,6 @@ public class PlayerInteractor : MonoBehaviour
     Item ItemGiving;
     Location locationReached;
     People personConfronted;
-    LovePerson LovePerson;
 
     //[SerializeField] Animator doorAnimator;
 
@@ -46,6 +48,8 @@ public class PlayerInteractor : MonoBehaviour
 
     bool inLeft;
     bool inRight;
+
+    float probability;
 
     Vector3 offset = new Vector3(-1, 0, 0);
     Vector3 currentVelocity;
@@ -112,6 +116,9 @@ public class PlayerInteractor : MonoBehaviour
         if (locationReached != null)
         {
             //call default interact text with 2 buttons
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+
             //GiveItem();
             //Escort();
             locationReached = null;
@@ -217,7 +224,7 @@ public class PlayerInteractor : MonoBehaviour
         bool lover = false; //a bool to see if player has their lover
         bool follow = false;
 
-        Debug.Log("escort pressed for " + interactLover.lovePerson.loverName);
+        Debug.Log("escort pressed for " + interactLover.lover.GetName());
         //check if the player has the escort task for the lover to be escorted to
         if (onTurnHandler.GetPlayer().GetLover() == interactLover) //target lover VS interacting lover
         {
@@ -235,7 +242,7 @@ public class PlayerInteractor : MonoBehaviour
         //follow system 
         if (follow)
         {
-            Debug.Log(interactLover.lovePerson.loverName + " is following Player");
+            Debug.Log(interactLover.lover.GetName() + " is following Player");
             interactLover.GameObject().transform.position = Vector3.SmoothDamp(interactLover.GameObject().transform.position, player.transform.position + offset, ref currentVelocity, followSpeed);
         }
 
@@ -249,7 +256,7 @@ public class PlayerInteractor : MonoBehaviour
         }
         else if (playerData.GetCurrentLocation() != null)
         {
-            Debug.Log(interactLover.lovePerson.loverName + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
+            Debug.Log(interactLover.lover.GetName() + " has been dropped off at " + playerData.GetCurrentLocation().locationName);
             follow = false;
         }
         //how will player drop npc off? just as a trigger for the npc????
@@ -262,18 +269,8 @@ public class PlayerInteractor : MonoBehaviour
         //check that player has confront task with this player
         if (confrontTask.GetPerson() == personConfronted)
         {
-            //A
-            Debug.Log("plays says small insult");
-            playerData.SetAffection(10);
-
-            //B
-            Debug.Log("plays says medium insult");
-
-            playerData.SetAffection(20);
-
-            //C
-            Debug.Log("plays says large insult");
-            playerData.SetAffection(40);
+            //activate/display buttons and text
+            //Option A, B, C
         }
         else
         {
@@ -282,6 +279,34 @@ public class PlayerInteractor : MonoBehaviour
         //if so confront 3 choices
         //instantiate text box that points to conversation folder
     }
+
+    void OptionA()
+    {
+        Debug.Log("plays says small insult");
+        playerData.AddAffection(10);
+    }
+
+    void OptionB()
+    {
+        Debug.Log("plays says medium insult");
+        probability = 1f / 2f; //50 percent chance (a 1 in 2 chance)
+        if (Random.Range(0f, 1f) <= probability)
+        {
+            playerData.AddAffection(20);
+        }
+    }
+
+    void OptionC()
+    {
+        Debug.Log("plays says large insult");
+        probability = 1f / 10f; //10 percent chance (a 1 in 2 chance)
+        if (Random.Range(0f, 1f) <= probability)
+        {
+            playerData.AddAffection(40);
+        }
+    }
+
+
     [Button]
     private bool GiveLeft()
     {
