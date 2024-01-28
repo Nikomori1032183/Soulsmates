@@ -85,7 +85,7 @@ public class PlayerInteractor : MonoBehaviour
             Debug.Log("A Lover is Near");
             InteractLover interact = other.GetComponent<InteractLover>();
             interactLover = interact;
-            Debug.Log(interactLover.lovePerson.loverName);
+            Debug.Log(interactLover.lover.GetName());
         }
 
         //if (other.GetComponent<Location>() != null)
@@ -118,9 +118,9 @@ public class PlayerInteractor : MonoBehaviour
             //call default interact text with 2 buttons
             TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
             tb.SetDirectory("");
-
-            //GiveItem();
-            //Escort();
+            //set 2 buttons to be active
+                //GiveItem();
+                //Escort();
             locationReached = null;
         }
 
@@ -180,48 +180,12 @@ public class PlayerInteractor : MonoBehaviour
             return;
         }
 
-        //move give left and right stuff into the functions and wait till selected to continue with rest of code
-
-        //choose an item to give
-        if (GiveLeft()) //push button for give left
-        {
-            Debug.Log("Giving Left Item");
-            ItemGiving = charData.GetLeftItem();
-        }
-        if (GiveRight()) //push button for give right
-        {
-            Debug.Log("Giving Right Item");
-            ItemGiving = charData.GetRightItem();
-        }
-
-        //rest of code
-
-        if (fetchTask.GetItem() == ItemGiving)
-        {
-            Debug.Log("Fetch Task Complete");
-            fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
-            RemoveItem();
-        }
-        //check if item is liked or hated
-        if (ItemGiving == lover.GetDislikedItem())
-        {
-            Debug.Log("Character Disliked the item, likeability went down");
-            RemoveItem();
-            //decrease playerData likeability
-            //Display dislike text
-        }
-        else
-        {
-            Debug.Log("Character had no opinion for the item");
-            RemoveItem();
-            //display text for no opinion about item
-        }
-
+        //set UI Buttons for Give left and right to active
     }
     [Button]
     private void Escort()
     {
-        bool lover = false; //a bool to see if player has their lover
+        bool lover = false;
         bool follow = false;
 
         Debug.Log("escort pressed for " + interactLover.lover.GetName());
@@ -308,14 +272,51 @@ public class PlayerInteractor : MonoBehaviour
 
 
     [Button]
-    private bool GiveLeft()
+    private void GiveLeft()
     {
-        return true;
+        Debug.Log("Giving Left Item");
+        ItemGiving = charData.GetLeftItem();
+        ItemGive();
     }
     [Button]
-    private bool GiveRight()
+    private void GiveRight()
     {
-        return true;
+        Debug.Log("Giving Right Item");
+        ItemGiving = charData.GetRightItem();
+        ItemGive();
+    }
+
+    private void ItemGive()
+    {
+        //disable buttons
+
+        if (fetchTask.GetItem() == ItemGiving)
+        {
+            Debug.Log("Fetch Task Complete");
+            fetchTask.ChangeTaskStage(FetchTask.TaskStage.Item_Gifted);
+            RemoveItem();
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory(""); //Display retrieved liked item text
+            tb.
+        }
+        //check if item is liked or hated
+        if (ItemGiving == lover.GetDislikedItem())
+        {
+            Debug.Log("Character Disliked the item, likeability went down");
+            RemoveItem();
+            playerData.RemoveAffection(10);
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+            //Display dislike text
+        }
+        else
+        {
+            Debug.Log("Character had no opinion for the item");
+            RemoveItem();
+            TextBox tb = Instantiate(textBoxPrefab, new Vector3(-960, -362.7f, 0), Quaternion.identity).GetComponent<TextBox>();
+            tb.SetDirectory("");
+            //display text for no opinion about item
+        }
     }
 
     private void RemoveItem()

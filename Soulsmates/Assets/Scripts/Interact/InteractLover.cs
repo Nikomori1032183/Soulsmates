@@ -5,7 +5,6 @@ using UnityEngine;
 public class InteractLover : MonoBehaviour
 {
     [SerializeField] Location location;
-    //public LovePerson lovePerson;
     public Lover lover;
 
     void Start()
