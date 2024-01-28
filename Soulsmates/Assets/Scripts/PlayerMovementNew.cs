@@ -7,10 +7,13 @@ public class PlayerMovementNew : MonoBehaviour
     [SerializeField] float curSpeed;
     public float defSpeed;
     public float sprint;
+    public Animation walkAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
+        walkAnimator = GetComponentInChildren<Animation>();
+        walkAnimator.Play();
         InputHandler.OnForward += MoveForward;
         InputHandler.OnBackward += MoveBackward;
         InputHandler.OnLeft += MoveLeft;
@@ -22,7 +25,14 @@ public class PlayerMovementNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (curSpeed != 0)
+        {
+            walkAnimator.Play();
+        }
+        if (curSpeed == 0)
+        {
+            walkAnimator.Stop();
+        }
     }
 
     private void MoveSprint()
