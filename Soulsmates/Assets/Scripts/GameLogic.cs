@@ -21,7 +21,9 @@ public class GameLogic : MonoBehaviour
     [SerializeField] Lover goose, guy, horror, anime;
     public List<Lover> lovers = new List<Lover>();
 
-    FetchTask fetchTask;
+    [SerializeField] FetchTask fetchTask;
+    [SerializeField] EscortTask escortTask;
+    [SerializeField] ConfrontTask confrontTask;
 
     void Start()
     {
@@ -99,11 +101,13 @@ public class GameLogic : MonoBehaviour
     {
         playerData.ResetTasks();
         
-        playerData.AddTask(new FetchTask());
-
         fetchTask.SetItem(playerData.GetLover().GetLikedItem());
+        escortTask.SetLocation(playerData.GetLover().GetLikedLocation());
+        confrontTask.SetPerson(playerData.GetLover().GetDislikedPerson());
 
-
+        playerData.AddTask(fetchTask);
+        playerData.AddTask(escortTask);
+        playerData.AddTask(confrontTask);
     }
 
     public void LoadItems()
