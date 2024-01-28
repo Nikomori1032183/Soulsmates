@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading;
 using UnityEngine;
 using VInspector;
@@ -10,6 +11,7 @@ public class TurnHandler : MonoBehaviour
     // Description: A class for handling the players turns
 
     [SerializeField] PlayerData player1, player2, player3, player4;
+    [SerializeField] Timer timer;
 
     enum Player
     {
@@ -17,6 +19,7 @@ public class TurnHandler : MonoBehaviour
     }
 
     Player currentPlayer = Player.Player_1;
+    PlayerData currentPlayerData;
 
     public delegate void TurnDelegate();
     public delegate void PlayerDataTurnDelegate(PlayerData currentPlayerData);
@@ -34,7 +37,7 @@ public class TurnHandler : MonoBehaviour
 
     void Update()
     {
-
+        //if (currentPlayer.)
     }
 
     public PlayerData GetPlayer()
@@ -65,25 +68,32 @@ public class TurnHandler : MonoBehaviour
         {
             case Player.Player_1:
                 currentPlayer = Player.Player_2;
+                currentPlayerData = player2;
                 OnTurnChangePlayerData?.Invoke(player2);
                 Debug.Log("Player 2's Turn");
                 break;
 
             case Player.Player_2:
                 currentPlayer = Player.Player_3;
+                currentPlayerData = player3;
                 OnTurnChangePlayerData?.Invoke(player3);
                 Debug.Log("Player 3's Turn");
                 break;
 
             case Player.Player_3:
                 currentPlayer = Player.Player_4;
+                currentPlayerData = player4;
                 OnTurnChangePlayerData?.Invoke(player4);
                 Debug.Log("Player 4's Turn");
                 break;
 
             case Player.Player_4:
                 currentPlayer = Player.Player_1;
+                currentPlayerData = player1;
                 OnTurnChangePlayerData?.Invoke(player1);
+
+                //if ()
+
                 Debug.Log("Player 1's Turn");
                 break;
         }
