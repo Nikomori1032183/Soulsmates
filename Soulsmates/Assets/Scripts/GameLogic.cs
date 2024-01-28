@@ -21,14 +21,22 @@ public class GameLogic : MonoBehaviour
     [SerializeField] Lover goose, guy, horror, anime;
     public List<Lover> lovers = new List<Lover>();
 
-    [SerializeField] FetchTask fetchTask;
-    [SerializeField] EscortTask escortTask;
-    [SerializeField] ConfrontTask confrontTask;
+    [SerializeField] PlayerInteractor interactor;
 
+    //FetchTask fetchTask;
+    //EscortTask escortTask;
+    //ConfrontTask confrontTask;
+
+    FetchTask fetchTask;
+    EscortTask escortTask;
+    ConfrontTask confrontTask;
+
+
+    [SerializeField] Timer timer;
     void Start()
     {
         //events
-        TurnHandler.OnTurnChangePlayerData += SetPlayerTasks;
+        //TurnHandler.OnTurnChangePlayerData += SetPlayerTasks;
 
         //TurnHandler
 
@@ -43,9 +51,8 @@ public class GameLogic : MonoBehaviour
         lovers.Add(anime);
 
         
-
         // load main menu scene
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
 
         // if exit is clicked 
         // stop
@@ -74,14 +81,19 @@ public class GameLogic : MonoBehaviour
         guy.RandomPreferences();
         horror.RandomPreferences();
         anime.RandomPreferences();
-
-        //set current player
+        //Debug.Log(goose.GetLikedItem());
         //change ui color
-        //start timer
 
-        //if the dialogue is showing stop timer
+        //start timer
+        timer.WipeTimer();
+        timer.NewTimer();
+
+        //if the dialogue is showing stop timer YES
+    
 
         //if players has 100 affectioon
+        SetPlayerTasks(player1);
+
         //start final date
         // then load play win scene
 
@@ -100,14 +112,13 @@ public class GameLogic : MonoBehaviour
     public void SetPlayerTasks(PlayerData playerData)
     {
         playerData.ResetTasks();
-        
-        fetchTask.SetItem(playerData.GetLover().GetLikedItem());
-        escortTask.SetLocation(playerData.GetLover().GetLikedLocation());
-        confrontTask.SetPerson(playerData.GetLover().GetDislikedPerson());
 
-        playerData.AddTask(fetchTask);
-        playerData.AddTask(escortTask);
-        playerData.AddTask(confrontTask);
+        Debug.Log(playerData.GetLover().GetLikedItem() + "1");
+        fetchTask?.SetItem(playerData.GetLover().GetLikedItem());
+        Debug.Log(playerData.GetLover().GetLikedItem()+ "2");
+
+        escortTask?.SetLocation(playerData.GetLover().GetLikedLocation());
+        confrontTask?.SetPerson(playerData.GetLover().GetDislikedPerson());
     }
 
     public void LoadItems()

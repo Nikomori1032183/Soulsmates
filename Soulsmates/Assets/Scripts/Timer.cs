@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TurnHandler turnHandler;
 
-    [SerializeField] float timerLength = 120.0f;
+    [SerializeField] float timerLength = 10.0f;
     float timeLeft;
     float hourCounter;
     [SerializeField] int dayTime = 0;
@@ -31,6 +31,8 @@ public class Timer : MonoBehaviour
         timerActive = true;
 
         TurnHandler.OnTurnChange += NewTimer;
+        TextBox.OnOpen += PauseTimer;
+        TextBox.OnExit += StartTimer;
     }
 
     void Update()
@@ -40,36 +42,38 @@ public class Timer : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
             hourCounter += Time.deltaTime;
-
         }
+
         if (timeLeft <= 0)
         {
             Debug.Log("Ran Out of time!");
-            PauseTimer(true);
+            PauseTimer();
             //pop up a confirmation menu for changing player
             turnHandler.ChangeTurn(); //change turn
-            NewTimer();
+            //NewTimer();
         }
+
         if (hourCounter >= 60)
         {
             hourCounter = 0;
             dayTime++;
         }
+
         if (dayTime == 8)
         {
             day++;
             dayTime = 0;
         }
+
         timerText.text = "Day " + day + "\n" + dayTime + ":" + Mathf.Round(hourCounter);
     }
 
-    void NewTimer()
+    public void NewTimer()
     {
         timeLeft = timerLength;
-        timerActive = true;
+        StartTimer();
     }
-
-    void EndTimer()
+    public void EndTimer()
     {
         OnTimerEnd?.Invoke();
         timerActive = false;
@@ -77,24 +81,27 @@ public class Timer : MonoBehaviour
         
     }
 
-    void PauseTimer(bool pause)
+    public void StartTimer()
     {
-        if (pause)
-        {
-            timerActive = false;
-        }
-        else
-        {
-            timerActive = true;
-        }
+        timerActive = true;
     }
 
-    void WipeTimer()
+    public void PauseTimer()
+    {
+        timerActive = false;
+    }
+
+    public void WipeTimer()
     {
         timerActive = false;
         timeLeft = timerLength;
         day = 0;
         dayTime = 0;
         hourCounter = 0;
+    }
+
+    public int GetDay()
+    {
+        return day;
     }
 }

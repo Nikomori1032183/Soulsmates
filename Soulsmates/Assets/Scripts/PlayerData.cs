@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    string playerName;
-    List<Task> playerTasks = new List<Task>();
-    int affection;
-    Lover lover;
+    public string playerName;
+    public List<Task> playerTasks = new List<Task>();
+    public int affection;
+    public Lover lover;
     
 
     void Start()
