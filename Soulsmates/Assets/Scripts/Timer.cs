@@ -7,6 +7,7 @@ using VInspector;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TurnHandler turnHandler;
 
     [SerializeField] float timerLength = 120.0f;
     float timeLeft;
@@ -24,7 +25,7 @@ public class Timer : MonoBehaviour
         timeLeft = timerLength;
         timerActive = true;
 
-        //TurnHandler.OnTurnChange += NewTimer;
+        TurnHandler.OnTurnChange += NewTimer;
     }
 
     void Update()
@@ -40,7 +41,9 @@ public class Timer : MonoBehaviour
         {
             Debug.Log("Ran Out of time!");
             PauseTimer(true);
-            //end player turn and reset timer
+            //pop up a confirmation menu for changing player
+            turnHandler.ChangeTurn(); //change turn
+            NewTimer();
         }
         if (hourCounter >= 60)
         {
@@ -55,7 +58,7 @@ public class Timer : MonoBehaviour
         timerText.text = "Day " + day + "\n" + dayTime + ":" + Mathf.Round(hourCounter);
     }
 
-    void NewTimer() // doesnt actually need that info but we deal with it for now lmao. i guess the solution for that would be to have multiple types of delegate that the turn system can send out
+    void NewTimer()
     {
         timeLeft = timerLength;
         timerActive = true;
@@ -77,5 +80,14 @@ public class Timer : MonoBehaviour
         {
             timerActive = true;
         }
+    }
+
+    void WipeTimer()
+    {
+        timerActive = false;
+        timeLeft = timerLength;
+        day = 0;
+        dayTime = 0;
+        hourCounter = 0;
     }
 }

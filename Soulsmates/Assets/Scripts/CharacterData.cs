@@ -10,6 +10,7 @@ public class CharacterData : MonoBehaviour
 {
     Item leftHand, rightHand;
     int coins;
+    [SerializeField] Location currentLocation;
     List<Status> statuses = new List<Status>();
     float speedMod;
 
@@ -75,5 +76,14 @@ public class CharacterData : MonoBehaviour
     public Item GetRightItem()
     {
         return rightHand;
+    }
+    public void SetCurrentLocation(Location here)
+    {
+        this.currentLocation = here;
+    }
+
+    public Location GetCurrentLocation()
+    {
+        return currentLocation;
     }
 }
