@@ -16,6 +16,8 @@ MonoBehaviour:
     keys:
     - 6c2bed77341371548b899b5c1fb430ef
     - 9493bdd7734439141a91670c555c09bb
+    - 0fa9764b898b4e84bb507f8581354b97
+    - 1d2923bd7a0678740877e45ecb3a987e
     values:
     - goDatasByGlobalId:
         keys:
@@ -32,11 +34,198 @@ MonoBehaviour:
     - goDatasByGlobalId:
         keys:
         - GlobalObjectId_V1-2-9493bdd7734439141a91670c555c09bb-1803686010-0
+        - GlobalObjectId_V1-2-9493bdd7734439141a91670c555c09bb-919132149155446097-1087174102
         values:
+        - iColor: 0
+          icon: 
         - iColor: 0
           icon: 
       goDatasByInstanceId:
-        keys: 04a9ffff
+        keys: f25c00000a5b0000
         values:
         - iColor: 0
           icon: 
+        - iColor: 0
+          icon: 
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []
+    - goDatasByGlobalId:
+        keys:
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1614940130-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1348857952-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-2072368604-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1979927444-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-972279242-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1024232344-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-110738137-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-98355023-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-661520316-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-671544636-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-611440045-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1896943610-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-809401141-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-235084693-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1223783187-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-327953573-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1462458179-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-7373157182392882382-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-257518794-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-532056080-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1532376584-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1588126401-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-326867953882747205-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-4641939455522125662-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-3216213509092890564-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-6205112291520245158-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-7385193375100652019-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-2178808360489861475-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-357948807280701850-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-988856043257223813-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-7608964510913387925-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-5596747316906681554-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-1450314561-0
+        - GlobalObjectId_V1-2-1d2923bd7a0678740877e45ecb3a987e-111671899-0
+        values:
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: Light Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: Camera Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 9
+          icon: Canvas Icon
+        - iColor: 0
+          icon: EventSystem Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: Folder Icon
+      goDatasByInstanceId:
+        keys: 5a5f0000125f0000a85f0000a25f0000d85e0000ea5e0000485e00003c5e0000b05e0000bc5e0000a85e00009e5f0000d25e0000545e00000a5f0000665e00002c5f0000fc5f00005a5e00008a5e00003e5f00004c5f0000ba5f0000da5f0000d45f0000f45f0000fe5f0000cc5f0000be5f0000c45f000004600000e65f0000225f000050e9ffff
+        values:
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: Light Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: Camera Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 0
+          icon: BoxCollider Icon
+        - iColor: 9
+          icon: Canvas Icon
+        - iColor: 0
+          icon: EventSystem Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: cs Script Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: PreMatCube
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: AvatarMask On Icon
+        - iColor: 0
+          icon: Folder Icon
+        - iColor: 0
+          icon: Folder Icon
